@@ -28,7 +28,10 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+<<<<<<< HEAD
     bcrypt (3.1.7)
+=======
+>>>>>>> f5be12512a67fb6b2c90f8a16d87016a853ec225
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.2)
@@ -157,7 +160,10 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.1.1.1)
+<<<<<<< HEAD
   capybara (~> 2.2.1)
+=======
+>>>>>>> f5be12512a67fb6b2c90f8a16d87016a853ec225
   coffee-rails (~> 4.0.0)
   devise (~> 3.2.4)
   factory_girl_rails (~> 4.4.1)
