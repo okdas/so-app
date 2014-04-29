@@ -24,5 +24,6 @@ describe Question do
                with_long_message('Question cannot be more than 5000 characters')
   end
 
+  it { should belong_to(:user) }
 
 end

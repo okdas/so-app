@@ -12,4 +12,6 @@ class Question < ActiveRecord::Base
                       too_short: 'Question must be more than 50 characters',
                       too_long: 'Question cannot be more than 5000 characters'
 
+  belongs_to :user
+
 end
