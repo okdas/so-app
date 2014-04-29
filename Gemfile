@@ -40,6 +40,8 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'devise', '~> 3.2.4'
+
 gem 'rspec-rails', '~> 2.14.2', group: [:development, :test]
 gem 'factory_girl_rails', '~> 4.4.1', group: [:development, :test]
 gem 'shoulda-matchers', '~> 2.6.0', group: :test
