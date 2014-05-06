@@ -1,8 +1,26 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
+  sequence :title do |n|
+    "My question number #{n}"
+  end
+
+  sequence :body do |n|
+    "Lorem ipsum #{n} dolor sit amet, consectetur adipiscing elit."
+  end
+
   factory :question do
-    title "My question nomer one"
-    body "How to write specs for testing views? I should find the easiest way to do it!"
+    title
+    body
+  end
+
+  factory :invalid_question, class: 'Question' do
+    title 'NoN'
+    body 'nil'
+  end
+
+  factory :static_question, class: 'Question' do
+    title 'My question number nil'
+    body 'Donec vestibulum faucibus est, vitae tristique erat sollicitudin vitae.'
   end
 end

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :questions, only: [:show, :new]
+  resources :questions
 
-  get '/questions', to: 'questions#index'
+  # get '/questions', to: 'questions#index'
 
   root 'questions#index'
 
