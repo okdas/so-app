@@ -6,7 +6,7 @@ describe Question do
   it { should validate_presence_of :body }
 
   # TODO: uniqueness tests with a factory girl
-  it { should validate_uniqueness_of(:title).with_message('This question is already exists.') }
+  it { should validate_uniqueness_of(:title) }
 
   it do
     should ensure_length_of(:title).
