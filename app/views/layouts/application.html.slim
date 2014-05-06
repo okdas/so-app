@@ -1,0 +1,109 @@
+doctype html
+html
+  head
+    title
+      | SoApp
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    .so-masthead
+      .container
+        nav.so-nav
+          a.so-nav-item.active[href="#"]
+            | Home
+          a.so-nav-item[href="#"]
+            | New features
+          a.so-nav-item[href="#"]
+            | Press
+          a.so-nav-item[href="#"]
+            | New hires
+          a.so-nav-item[href="#"]
+            | About
+    p.notice
+      = notice
+    p.alert
+      = alert
+    .container
+      .so-header
+        h1.so-title
+          | The Bootstrap Blog
+        p.lead.so-description
+          | The official example template of creating a blog with Bootstrap.
+      .row
+        .col-sm-8.so-main
+          = yield
+        .col-sm-3.col-sm-offset-1
+          .sidebar-module.sidebar-module-inset
+            h4
+              | About
+            p
+              | Etiam porta 
+              em
+                | sem malesuada magna
+              |  mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+          .sidebar-module
+            h4
+              | Archives
+            ol.list-unstyled
+              li
+                a[href="#"]
+                  | January 2014
+              li
+                a[href="#"]
+                  | December 2013
+              li
+                a[href="#"]
+                  | November 2013
+              li
+                a[href="#"]
+                  | October 2013
+              li
+                a[href="#"]
+                  | September 2013
+              li
+                a[href="#"]
+                  | August 2013
+              li
+                a[href="#"]
+                  | July 2013
+              li
+                a[href="#"]
+                  | June 2013
+              li
+                a[href="#"]
+                  | May 2013
+              li
+                a[href="#"]
+                  | April 2013
+              li
+                a[href="#"]
+                  | March 2013
+              li
+                a[href="#"]
+                  | February 2013
+          .sidebar-module
+            h4
+              | Elsewhere
+            ol.list-unstyled
+              li
+                a[href="#"]
+                  | GitHub
+              li
+                a[href="#"]
+                  | Twitter
+              li
+                a[href="#"]
+                  | Facebook
+    .so-footer
+      p
+        | Blog template built for 
+        a[href="http://getbootstrap.com"]
+          | Bootstrap
+        |  by 
+        a[href="https://twitter.com/mdo"]
+          | @mdo
+        | .
+      p
+        a[href="#"]
+          | Back to top
