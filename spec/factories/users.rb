@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :user do
+    name 'Jon Snow'
+    email 'jon-snow@winterfell.com'
+    password 'winterIsComing'
   end
 end
