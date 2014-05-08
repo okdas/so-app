@@ -4,8 +4,6 @@ describe Question do
 
   it { should validate_presence_of :title }
   it { should validate_presence_of :body }
-
-  # TODO: uniqueness tests with a factory girl
   it { should validate_uniqueness_of(:title) }
 
   it do
