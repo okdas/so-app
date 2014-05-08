@@ -5,6 +5,8 @@ describe QuestionsController do
   let(:questions) { create_list(:question, 2) }
   let(:static_question) { create(:static_question) }
   let(:invalid_question) { create(:invalid_question) }
+  let(:user) { create :user }
+  before { login_as(user, scope: :user) }
 
 
   describe 'GET #index' do
