@@ -6,8 +6,10 @@ describe QuestionsController do
   let(:static_question) { create(:static_question) }
   let(:invalid_question) { create(:invalid_question) }
   let(:user) { create :user }
-  before { login_as(user, scope: :user) }
-
+  before(:each) do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in user
+  end
 
   describe 'GET #index' do
 
@@ -27,6 +29,10 @@ describe QuestionsController do
 
     it 'assigns the requested question to @question' do
       expect(assigns(:question)).to eq question
+    end
+
+    it 'assigns new answer for question' do
+      expect(assigns(:answer)).to be_a_new(Answer)
     end
 
     it 'renders show view' do
