@@ -48,3 +48,4 @@ gem 'rspec-rails', '~> 2.14.2', group: [:development, :test]
 gem 'factory_girl_rails', '~> 4.4.1', group: [:development, :test]
 gem 'shoulda-matchers', '~> 2.6.0', group: :test
 gem 'capybara', '~> 2.2.1', group: :test
+gem 'launchy', '~> 2.4.2', group: :test

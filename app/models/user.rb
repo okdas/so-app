@@ -1,14 +1,13 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :questions
+  has_many :answers
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates_presence_of :name
-
-  validates_length_of :name, in: 2..20,
-                      too_short: 'Name must be more than 2 characters',
-                      too_long: 'Name cannot be more than 20 characters'
-
-  has_many :questions
+  validates :name, presence: true, length: {
+      within: 2..20,
+      too_short: 'Name must be more than 2 characters',
+      too_long: 'Name cannot be more than 20 characters'
+  }
 end
