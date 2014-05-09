@@ -1,2 +1,8 @@
-p.test
-  | question
+h3= @question.title
+  p= @question.body
+
+= form_for [@quetsion, @answer] do |f|
+  = f.label :body, 'Your answer'
+  = f.text_area :body
+
+  = f.submit 'Give answer'
