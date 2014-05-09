@@ -1,7 +1,11 @@
 h3= @question.title
   p= @question.body
 
-= form_for [@quetsion, @answer] do |f|
+.answers
+  - @question.answers.each do |answer|
+    =p answer.body
+
+= form_for [@question, @answer] do |f|
   = f.label :body, 'Your answer'
   = f.text_area :body
 
