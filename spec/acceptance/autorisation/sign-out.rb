@@ -8,7 +8,7 @@ feature 'signing out', %q{
   As signed in user
   I want to be able to sign out
 } do
-  let(:user) { create(:user) }
+  given(:user) { create(:user) }
   scenario 'Existing user trying to sign out' do
     login_as(user, scope: :user)
 

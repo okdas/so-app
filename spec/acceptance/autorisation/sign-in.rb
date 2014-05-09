@@ -5,7 +5,7 @@ feature 'signing in', %q{
   As an user
   I want to be able to login
 } do
-  let(:user) { create(:user) }
+  given(:user) { create(:user) }
 
   scenario 'Existing user trying to log in' do
     visit new_user_session_path

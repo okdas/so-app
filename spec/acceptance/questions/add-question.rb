@@ -5,7 +5,7 @@ feature 'asking question', %q{
   As an a registered person
   I want to be able to ask question
 } do
-  let(:user) { create :user }
+  given(:user) { create :user }
   scenario 'Registered user trying to ask a question' do
     login_as(user, scope: :user)
 
