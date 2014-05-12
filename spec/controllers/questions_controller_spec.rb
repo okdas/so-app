@@ -6,6 +6,7 @@ describe QuestionsController do
   let(:static_question) { create(:static_question) }
   let(:invalid_question) { create(:invalid_question) }
   let(:user) { create :user }
+
   before(:each) do
     @request.env["devise.mapping"] = Devise.mappings[:user]
     sign_in user
@@ -68,9 +69,11 @@ describe QuestionsController do
       it 'saves new question in Question' do
         expect { post :create, question: attributes_for(:question), user_id: user }.to change(Question, :count).by(1)
       end
+
       it 'saves new question to user.question' do
-        expcect { post :create, question: attributes_for(:question), user_id: user }.to change(user.questions, :count).by(1)
+        expect { post :create, question: attributes_for(:question), user_id: user }.to change(user.questions, :count).by(1)
       end
+
       it 'redirects to created question' do
         post :create, question: attributes_for(:question), user_id: user
         expect(response).to redirect_to question_path(assigns(:question))
