@@ -66,20 +66,23 @@ describe QuestionsController do
   describe 'POST #create' do
     context 'with valid information' do
       it 'saves new question in Question' do
-        expect { post :create, question: attributes_for(:question) }.to change(Question, :count).by(1)
+        expect { post :create, question: attributes_for(:question), user_id: user }.to change(Question, :count).by(1)
+      end
+      it 'saves new question to user.question' do
+        expcect { post :create, question: attributes_for(:question), user_id: user }.to change(user.questions, :count).by(1)
       end
       it 'redirects to created question' do
-        post :create, question: attributes_for(:question)
+        post :create, question: attributes_for(:question), user_id: user
         expect(response).to redirect_to question_path(assigns(:question))
       end
     end
 
     context 'with invalid information' do
       it 'does not save new question' do
-        expect { post :create, question: attributes_for(:invalid_question) }.to_not change(Question, :count)
+        expect { post :create, question: attributes_for(:invalid_question), user_id: user }.to_not change(Question, :count)
       end
       it 'redirects to new view' do
-        post :create, question: attributes_for(:invalid_question)
+        post :create, question: attributes_for(:invalid_question), user_id: user
         expect(response).to render_template :new
       end
     end
