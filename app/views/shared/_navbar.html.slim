@@ -1,0 +1,32 @@
+.container
+  .row
+    nav.navbar.navbar-inverse.navbar-embossed.navbar-lg role="navigation"
+      .navbar-header
+        button.navbar-toggle data-target="#navbar-collapse-02" data-toggle="collapse" type="button"
+          span.sr-only Toggle navigation
+        a.navbar-brand href="#"  SO APP
+      .collapse.navbar-collapse id="#navbar-collapse-02"
+        ul.nav.navbar-nav
+          li
+            = link_to 'Questions', questions_path
+            span.navbar-unread 3
+          li
+            a href="#"  Tags
+          li.active
+            a href="#"  People
+        ul.nav.navbar-nav.navbar-right
+          li.dropdown
+            a.dropdown-toggle data-toggle="dropdown" href="#"
+              | Tyrion Lannister
+              b.caret
+            span.dropdown-arrow
+            ul.dropdown-menu
+              li
+                a href="#"  Profile
+              li
+                a href="#"  Friends
+              li
+                a href="#"  Settings
+              li.divider
+              li
+                a href="#"  Logout

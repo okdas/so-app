@@ -1,0 +1,39 @@
+.iconbar.iconbar-horizontal.btn-block
+  ul
+    li.active
+      = link_to ' Ask question', new_question_path, class: 'fui-new'
+    li
+      a.fui-mail href="#fakelink"
+        span.iconbar-unread 3
+    li
+      a.fui-search href="#fakelink"
+
+.col
+  ul.nav.nav-list.nav-list-vivid
+    li.nav-header Top topics
+    li
+      a href="#fakelink"
+        | Ruby on Rails
+        span.badge.pull-right 255
+    li.active
+      a href="#fakelink"
+        | Linux
+        span.badge.pull-right 30
+    li
+      a href="#fakelink"
+        | PHP
+        span.badge.pull-right 4
+    li.divider
+    li.nav-header Top users
+    li
+      a href="#fakelink"
+        | Jon Snow
+        span.badge.pull-right 69
+    li
+      a href="#fakelink"
+        | Khaleesi
+        span.badge.pull-right 21
+    li
+      a href="#fakelink"
+        | Valar Morghulis
+        span.badge.pull-right 40

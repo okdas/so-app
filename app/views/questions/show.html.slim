@@ -1,12 +1,16 @@
-h3= @question.title
-  p= @question.body
+h4= @question.title
+p= @question.body
 
-.answers
+.answers.form-group
   - @question.answers.each do |answer|
     =p answer.body
 
 = form_for [@question, @answer] do |f|
-  = f.label :body, 'Your answer'
-  = f.text_area :body
-
-  = f.submit 'Give answer'
+  .row
+  .col-md-12
+    = f.label :body, 'Your answer'
+    .row
+      .col-md-8
+        = f.text_area :body, class: 'form-control'
+      .col-md-4
+        = f.submit 'Give answer', class: 'btn btn-hg btn-primary btn-block'
