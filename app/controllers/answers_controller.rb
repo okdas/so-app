@@ -6,9 +6,8 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
     @answer.user = current_user
-    # @answer = @question.answers.build(answer_params)
     @answer.save
-    redirect_to question_path(@answer.question)
+    # redirect_to question_path(@answer.question)
   end
 
   private
