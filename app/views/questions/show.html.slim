@@ -4,12 +4,6 @@ p= @question.body
 .answers
   =render 'answers/answers'
 
-= form_for [@question, @answer], remote: true do |f|
-  .row
-  .col-md-12
-    = f.label :body, 'Your answer'
-    .row
-      .col-md-8
-        = f.text_area :body, class: 'form-control'
-      .col-md-4
-        = f.submit 'Give answer', class: 'btn btn-hg btn-primary btn-block'
+= bootstrap_form_for [@question, @answer], remote: true do |f|
+  = f.text_area :body, hide_label: true
+  = f.primary   'Give answer'
