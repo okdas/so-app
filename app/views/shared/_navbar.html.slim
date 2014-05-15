@@ -4,7 +4,7 @@
       .navbar-header
         button.navbar-toggle data-target="#navbar-collapse-02" data-toggle="collapse" type="button"
           span.sr-only Toggle navigation
-        a.navbar-brand href="#"  SO APP
+        = link_to 'SO.app', root_path, class: 'navbar-brand'
       .collapse.navbar-collapse id="#navbar-collapse-02"
         ul.nav.navbar-nav
           li
@@ -14,19 +14,24 @@
             a href="#"  Tags
           li.active
             a href="#"  People
-        ul.nav.navbar-nav.navbar-right
-          li.dropdown
-            a.dropdown-toggle data-toggle="dropdown" href="#"
-              | Tyrion Lannister
-              b.caret
-            span.dropdown-arrow
-            ul.dropdown-menu
-              li
-                a href="#"  Profile
-              li
-                a href="#"  Friends
-              li
-                a href="#"  Settings
-              li.divider
-              li
-                a href="#"  Logout
+        - if user_signed_in?
+          ul.nav.navbar-nav.navbar-right
+            li.dropdown
+              a.dropdown-toggle data-toggle="dropdown" href="#"
+                | #{current_user.name}
+                b.caret
+              span.dropdown-arrow
+              ul.dropdown-menu
+                li
+                  a href="#"  Profile
+                li
+                  a href="#"  Friends
+                li
+                  a href="#"  Settings
+                li.divider
+                li
+                  = link_to 'Logout', destroy_user_session_path, method: :delete
+        - else
+          ul.nav.navbar-nav.navbar-right
+            li
+              = link_to 'Sign in', new_user_session_path
