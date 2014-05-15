@@ -1,16 +1,17 @@
-.iconbar.iconbar-horizontal.btn-block
-  ul
-    li.active
-      = link_to ' Ask question', new_question_path, class: 'fui-new'
-    li
-      a.fui-mail href="#fakelink"
-        span.iconbar-unread 3
-    li
-      a.fui-search href="#fakelink"
+.row
+  .iconbar.iconbar-horizontal.btn-block
+    ul
+      li.active
+        = link_to ' Ask question', new_question_path, class: 'fui-new'
+      li
+        a.fui-mail href="#fakelink"
+          span.iconbar-unread 3
+      li
+        a.fui-search href="#fakelink"
 
-.col
+.row
   ul.nav.nav-list.nav-list-vivid
-    li.nav-header Top topics
+    li.nav-header Popular topics
     li
       a href="#fakelink"
         | Ruby on Rails
@@ -24,7 +25,7 @@
         | PHP
         span.badge.pull-right 4
     li.divider
-    li.nav-header Top users
+    li.nav-header Most active users
     li
       a href="#fakelink"
         | Jon Snow
