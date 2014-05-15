@@ -23,7 +23,7 @@ feature 'signing in', %q{
     fill_in 'Password', with: 'whereIsMyDragons?'
 
     click_button 'Sign in'
-    save_and_open_page
+
     expect(page).to have_content('Invalid email or password.')
   end
 
