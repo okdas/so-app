@@ -1,6 +1,4 @@
-= form_for @question do |f|
-  = f.label :title
-  = f.text_field :title
-  = f.label :body, 'Question'
-  = f.text_area :body
-  = f.submit 'Ask question'
+= bootstrap_form_for @question do |f|
+  = f.text_field :title, autofocus: true
+  = f.text_area :body, label: 'Question'
+  = f.primary 'Ask question'
