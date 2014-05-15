@@ -1,6 +1,18 @@
 .questions
   .row-fluid
-    -for question in @questions do
-      .top-question
-        h4 #{link_to question.title, question} by #{question.user.name}
-      p = question.body
+    -for q in @questions do
+      .row
+        .counts
+          .col-md-1.votes
+            .item-count 0
+            p.small votes
+          .col-md-1.answers
+            .item-count #{q.answers.count}
+            p.small answers
+          .col-md-1.views
+            .item-count 0
+            p.small views
+        .col-md-9
+          .question-title #{link_to q.title, q}
+          span.small #{q.user.name} at #{q.created_at.strftime("%H:%M")}
+          p <span class="label label-default">Linux</span> <span class="label label-default">FreeBSD</span>

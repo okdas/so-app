@@ -1,3 +1,18 @@
 // Place all the styles related to the Questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.counts {
+  text-align: center;
+}
+
+.counts .item-count {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.question-title {
+  font-size: 24px;
+  font-weight: bold;
+}
