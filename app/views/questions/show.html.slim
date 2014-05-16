@@ -1,6 +1,9 @@
 h4= @question.title
 p= @question.body
 
+- if @question.user == current_user
+  = link_to 'Edit question', edit_question_path(@question)
+
 .answers
   =render 'answers/answers'
 

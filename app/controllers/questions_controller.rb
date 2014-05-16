@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :load_question, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [ :new, :create ]
+  before_action :authenticate_user!, only: [ :new, :create, :edit, :update ]
+  before_action :question_belongs_to_current_user, only: [ :edit, :update ]
 
   layout 'questions'
 
@@ -30,6 +31,7 @@ class QuestionsController < ApplicationController
 
   def update
     if @question.update(question_params)
+      flash[:notice] = 'Your question successfully edited.'
       redirect_to @question
     else
       render :edit
@@ -42,6 +44,13 @@ class QuestionsController < ApplicationController
   end
 
   private
+
+  def question_belongs_to_current_user
+    unless current_user == @question.user
+      flash[:notice] = 'This is not your question.'
+      redirect_to root_path
+    end
+  end
 
   def load_question
     @question = Question.find(params[:id])

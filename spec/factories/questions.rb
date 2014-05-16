@@ -22,5 +22,6 @@ FactoryGirl.define do
   factory :static_question, class: 'Question' do
     title 'My question number nil'
     body 'Donec vestibulum faucibus est, vitae tristique erat sollicitudin vitae.'
+    association :user, factory: :user, strategy: :build
   end
 end
