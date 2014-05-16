@@ -4,10 +4,8 @@ h4= @question.title
 
 p= @question.body
 
-
-
-
-=render 'answers/answers'
+.answers
+  =render 'answers/answers'
 
 = bootstrap_form_for [@question, @answer], remote: true do |f|
   = f.text_area :body, hide_label: true

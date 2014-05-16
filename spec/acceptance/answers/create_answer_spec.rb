@@ -21,5 +21,10 @@ feature 'giving answer', %q{
     end
   end
 
-  scenario 'Not authenticated user trying to create answer'
+  scenario 'Not authenticated user trying to create answer' do
+    visit question_path(question)
+    fill_in 'answer_body', with: 'nothing to tell you.'
+    click_button 'Give answer'
+    expect(page).to have_content 'You need to sign in or sign up before continuing.'
+  end
 end

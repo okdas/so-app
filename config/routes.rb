@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  resources :answers do
+    resources :comments
+  end
+  resources :comments
+
   # get '/questions', to: 'questions#index'
 
   root 'questions#index'

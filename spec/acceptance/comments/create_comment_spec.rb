@@ -7,13 +7,15 @@ feature 'creating comment', %q{
 } do
   given(:answer) { create :answer }
 
-  scenario 'Authenticated user trying to comment answer' do
+  scenario 'Authenticated user trying to comment answer', js: true do
     login_as(answer.user, scope: :user)
 
     visit question_path(answer.question)
 
+    # save_and_open_page
+    click_on 'Comment answer'
     fill_in 'comment_body', with: 'Nothing interesting there. Just comment.'
-    click_on 'Comment'
+    click_button 'Add comment'
 
     expect(current_path).to eq question_path(answer.question)
 
@@ -22,5 +24,9 @@ feature 'creating comment', %q{
     end
   end
 
-  scenario 'Not authenticated user trying to comment answer'
+  scenario 'Not authenticated user trying to comment answer' do
+    visit question_path(answer.question)
+    click_on 'Comment answer'
+    expect(page).to have_content 'You need to sign in or sign up before continuing.'
+  end
 end
