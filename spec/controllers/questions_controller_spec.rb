@@ -53,10 +53,12 @@ describe QuestionsController do
   end
 
   describe 'GET #edit' do
-    before { get :edit, id: question }
+    before { sign_in static_question.user }
+
+    before { get :edit, id: static_question }
 
     it 'assigns question to @question' do
-      expect(assigns(:question)).to eq question
+      expect(assigns(:question)).to eq static_question
     end
 
     it 'renders new edit' do
@@ -92,6 +94,7 @@ describe QuestionsController do
   end
 
   describe 'PATCH #update' do
+    before { sign_in static_question.user }
     context 'with valid information' do
       it 'assigns question to @question' do
         patch :update, id: static_question, question: attributes_for(:static_question)
