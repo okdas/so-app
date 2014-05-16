@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'giving answer', %q{
-  As an an authenticated person
+  As an authenticated person
   I want to be able to give answer
 } do
   given(:user) { create :user }
@@ -19,6 +19,7 @@ feature 'giving answer', %q{
     within '.answers' do
       expect(page).to have_content 'nothing to tell you.'
     end
-
   end
+
+  scenario 'Not authenticated user trying to create answer'
 end

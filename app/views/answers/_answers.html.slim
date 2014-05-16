@@ -1,2 +1,29 @@
-- @question.answers.each do |answer|
-  =p answer.body
+.answers
+  ul.chat
+    / TODO: WTF WITH THIS ARRAY?
+    - for a in @question.answers[0..-2] do
+      li.left.clearfix
+        span.chat-img.pull-left
+          = gravatar_image_tag(a.user.email, alt: a.user.name, class: 'img-circle', size: 50, gravatar: { size: 50 })
+        .chat-body.clearfix
+          .header
+            strong.primary-font #{a.user.name}
+            small.pull-right.text-muted
+              span.glyphicon.glyphicon-time
+              | #{time_ago_in_words a.created_at} ago
+          p = a.body
+          .pull-right
+            a Comment
+      .add_comment[id="a#{a.id}"]
+      - if a.comments
+        - for c in a.comments do
+          li.right.clearfix
+            span.chat-img.pull-right
+              = gravatar_image_tag(a.user.email, alt: a.user.name, class: 'img-circle', size: 50, gravatar: { size: 50 })
+            .chat-body.clearfix
+              .header
+                strong.pull-right.primary-font #{c.user.name}
+                small.text-muted
+                  span.glyphicon.glyphicon-time
+                  | #{time_ago_in_words c.created_at} ago
+              p = c.body

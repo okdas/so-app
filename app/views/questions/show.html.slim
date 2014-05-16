@@ -1,11 +1,13 @@
 h4= @question.title
-p= @question.body
-
 - if @question.user == current_user
   = link_to 'Edit question', edit_question_path(@question)
 
-.answers
-  =render 'answers/answers'
+p= @question.body
+
+
+
+
+=render 'answers/answers'
 
 = bootstrap_form_for [@question, @answer], remote: true do |f|
   = f.text_area :body, hide_label: true
