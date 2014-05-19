@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-  before_action :load_question, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [ :new, :create, :edit, :update ]
+  before_action :load_question, only: [:show, :edit, :update, :destroy]
   before_action :question_belongs_to_current_user, only: [ :edit, :update ]
 
   layout 'questions'

@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
-  # before_action :load_answer
-  before_action :authenticate_user!, only: [ :create ]
+  before_action :authenticate_user!, only: [ :create, :edit ]
+  before_action :load_answer, only: [ :edit, :update ]
+  before_action :answer_belongs_to_current_user, only: [ :edit, :update ]
 
   def create
     @question = Question.find(params[:question_id])
@@ -8,6 +9,13 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     @answer.save
     # redirect_to question_path(@answer.question)
+  end
+
+  def edit
+  end
+
+  def update
+    @answer.update(answer_params)
   end
 
   private
@@ -18,5 +26,12 @@ class AnswersController < ApplicationController
 
   def answer_params
     params.require(:answer).permit(:body)
+  end
+
+  def answer_belongs_to_current_user
+    unless current_user == @answer.user
+      flash[:notice] = 'This is not your answer.'
+      redirect_to root_path
+    end
   end
 end

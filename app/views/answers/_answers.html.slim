@@ -5,15 +5,18 @@ ul.chat
       li.left.clearfix
         span.chat-img.pull-left
           = gravatar_image_tag(a.user.email, alt: a.user.name, class: 'img-circle', size: 50, gravatar: { size: 50 })
+          - if current_user == a.user
+            p.text-center
+              = link_to 'Edit', edit_question_answer_path(@question, a), remote: true
         .chat-body.clearfix
           .header
             strong.primary-font #{a.user.name}
             small.pull-right.text-muted
               span.glyphicon.glyphicon-time
               | #{time_ago_in_words a.created_at} ago
-          p = a.body
+          p[id="answer#{a.id}"] = a.body
           .pull-right
-            = link_to 'Comment answer', new_answer_comment_path(answer_id: a.id), remote: true
+            = link_to 'Comment answer', new_answer_comment_path(a), remote: true
       .comments[id="c#{a.id}"]
         = render 'comments/comments', answer: a
       .add_comment[id="a#{a.id}"]
