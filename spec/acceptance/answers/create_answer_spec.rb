@@ -1,6 +1,7 @@
 require 'acceptance/acceptance_helper'
 
 feature 'giving answer', %q{
+  In order to share my knowledge
   As an authenticated person
   I want to be able to give answer
 } do
@@ -19,6 +20,16 @@ feature 'giving answer', %q{
     within '.answers' do
       expect(page).to have_content 'nothing to tell you.'
     end
+  end
+
+  scenario 'Authenticated user trying to create invalid answer', js: true do
+    login_from_form(user)
+    visit question_path(question)
+
+    fill_in 'answer_body', with: ''
+    click_button 'Give answer'
+
+    expect(page).to have_content "Body can't be blank"
   end
 
   scenario 'Not authenticated user trying to create answer' do
