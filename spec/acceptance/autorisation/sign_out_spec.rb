@@ -1,8 +1,5 @@
 require 'acceptance/acceptance_helper'
 
-include Warden::Test::Helpers
-Warden.test_mode!
-
 feature 'signing out', %q{
   In order to be a visitor
   As signed in user
@@ -10,7 +7,7 @@ feature 'signing out', %q{
 } do
   given(:user) { create(:user) }
   scenario 'Existing user trying to sign out' do
-    login_as(user, scope: :user)
+    login_from_form(user)
 
     visit root_path
 

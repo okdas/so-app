@@ -7,14 +7,9 @@ feature 'asking question', %q{
   given(:user) { create :user }
   given(:question) { create :static_question }
   scenario 'Registered user trying to edit his own question' do
-    login_as(user, scope: :user)
+    login_from_form(question.user)
 
-    visit new_question_path
-
-    fill_in 'Title', with: 'My question number nil'
-    fill_in 'Question', with: 'Donec vestibulum faucibus est, vitae tristique erat sollicitudin vitae.'
-
-    click_button 'Ask question'
+    visit question_path(question)
 
     click_on 'Edit question'
 
@@ -27,7 +22,7 @@ feature 'asking question', %q{
   end
 
   scenario 'Registered user trying to edit foreign question' do
-    login_as(user, scope: :user)
+    login_from_form(user)
 
     visit question_path(question)
 

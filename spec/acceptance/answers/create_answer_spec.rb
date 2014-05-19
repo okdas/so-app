@@ -7,7 +7,7 @@ feature 'giving answer', %q{
   given(:user) { create :user }
   given(:question) { create :question }
   scenario 'Authenticated user trying to create answer', js: true do
-    login_as(user, scope: :user)
+    login_from_form(user)
 
     visit question_path(question)
 

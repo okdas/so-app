@@ -7,7 +7,7 @@ feature 'asking question', %q{
 } do
   given(:user) { create :user }
   scenario 'Registered user trying to ask a question' do
-    login_as(user, scope: :user)
+    login_from_form(user)
 
     visit new_question_path
 

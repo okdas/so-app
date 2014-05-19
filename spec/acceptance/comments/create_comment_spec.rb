@@ -6,9 +6,10 @@ feature 'creating comment', %q{
   I want to be able to comment answer
 } do
   given(:answer) { create :answer }
+  given(:user) { create :user }
 
   scenario 'Authenticated user trying to comment answer', js: true do
-    login_as(answer.user, scope: :user)
+    login_from_form(user)
 
     visit question_path(answer.question)
 

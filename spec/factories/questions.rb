@@ -12,6 +12,7 @@ FactoryGirl.define do
   factory :question do
     title
     body
+    association :user, factory: :user, strategy: :build
   end
 
   factory :invalid_question, class: 'Question' do
