@@ -19,7 +19,10 @@ feature 'Answer editing', %q{
       fill_in 'answer_body', with: 'answer.body answer.body answer.body'
       click_button 'Edit answer'
       expect(page).to have_content 'answer.body answer.body answer.body'
+      expect(page).to_not have_selector 'textarea'
     end
+
+    expect(page).to_not have_content answer.body
   end
 
   scenario 'Authenticated user trying to edit foreign answer' do
