@@ -6,11 +6,11 @@ module ControllerMacros
     end
   end
 
-  def login_user(user)
+  def login_user
     before(:each) do
+      @user = create :user
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      # user.confirm!
-      sign_in user
+      sign_in @user
     end
   end
 end

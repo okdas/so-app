@@ -5,13 +5,8 @@ describe QuestionsController do
   let(:questions) { create_list(:question, 2) }
   let(:static_question) { create(:static_question) }
   let(:invalid_question) { create(:invalid_question) }
-  let(:user) { create :user }
 
-  before(:each) do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
-    sign_in user
-  end
-
+  login_user
   describe 'GET #index' do
 
     before { get :index }
@@ -69,25 +64,25 @@ describe QuestionsController do
   describe 'POST #create' do
     context 'with valid information' do
       it 'saves new question in Question' do
-        expect { post :create, question: attributes_for(:question), user_id: user }.to change(Question, :count).by(1)
+        expect { post :create, question: attributes_for(:question), user_id: @user }.to change(Question, :count).by(1)
       end
 
-      it 'saves new question to user.question' do
-        expect { post :create, question: attributes_for(:question), user_id: user }.to change(user.questions, :count).by(1)
+      it 'saves new question to @user.question' do
+        expect { post :create, question: attributes_for(:question), user_id: @user }.to change(@user.questions, :count).by(1)
       end
 
       it 'redirects to created question' do
-        post :create, question: attributes_for(:question), user_id: user
+        post :create, question: attributes_for(:question), user_id: @user
         expect(response).to redirect_to question_path(assigns(:question))
       end
     end
 
     context 'with invalid information' do
       it 'does not save new question' do
-        expect { post :create, question: attributes_for(:invalid_question), user_id: user }.to_not change(Question, :count)
+        expect { post :create, question: attributes_for(:invalid_question), user_id: @user }.to_not change(Question, :count)
       end
       it 'redirects to new view' do
-        post :create, question: attributes_for(:invalid_question), user_id: user
+        post :create, question: attributes_for(:invalid_question), user_id: @user
         expect(response).to render_template :new
       end
     end

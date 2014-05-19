@@ -14,17 +14,11 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  Capybara.javascript_driver = :webkit
+  config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
-  # ## Mock Framework
-  #
-  # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
-  #
-  # config.mock_with :mocha
-  # config.mock_with :flexmock
-  # config.mock_with :rr
+  config.include Capybara::DSL
+  config.extend ControllerMacros
 
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If true, the base class of anonymous controllers will be inferred
@@ -37,10 +31,4 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
-  config.include Capybara::DSL
-
-
-  config.include FactoryGirl::Syntax::Methods
-
-  config.include Warden::Test::Helpers
 end
