@@ -19,14 +19,14 @@ feature 'creating comment', %q{
 
     expect(current_path).to eq question_path(question)
 
-    within '.comments_question' do
+    within '.question-comments' do
       expect(page).to have_content 'Nothing interesting there. Just comment.'
     end
   end
 
   scenario 'Not authenticated user trying to comment answer' do
     visit question_path(question)
-    click_on 'Comment answer'
+    click_on 'Comment question'
     expect(page).to have_content 'You need to sign in or sign up before continuing.'
   end
 end

@@ -1,1 +1,9 @@
-$('#c<%= @answer_id %>').html('<%= j render 'comments/comments', answer: @answer %>');
+<% if @comment_object.kind_of? Question %>
+$('.question-comments').html('<%= j render 'comments/comments' %>');
+$('.question-comment-form').html('');
+<% end %>
+
+<% if @comment_object.kind_of? Answer %>
+$('div.comments[data-comment-id="<%= @comment_object.id %>"]').html('<%= j render 'comments/comments' %>');
+$('div.comment-form[data-comment-form-id="<%= @comment_object.id %>').html('');
+<% end %>

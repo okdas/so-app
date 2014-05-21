@@ -1,11 +1,29 @@
-h4= @question.title
-- if @question.user == current_user
-  = link_to 'Edit question', edit_question_path(@question)
+.question
+  h4= @question.title
+  - if @question.user == current_user
+    = link_to 'Edit question', edit_question_path(@question)
 
-p= @question.body
+  p= @question.body
+  .pull-right
+    = link_to 'Comment question', new_question_comment_path(@question), remote: true, id: 'question-comment'
+  ul.chat
+    .question-comments
+      - if @question.comments
+        - for c in @question.comments do
+          li.right-chat.clearfix
+            span.chat-img.pull-right
+              = gravatar_image_tag(c.user.email, alt: c.user.name, class: 'img-circle', size: 50, gravatar: { size: 50 })
+            .chat-body.clearfix
+              .header
+                strong.pull-right.primary-font #{c.user.name}
+                small.text-muted
+                  span.glyphicon.glyphicon-time
+                  | #{time_ago_in_words c.created_at} ago
+              p = c.body
+  .question-comment-form
+  .answers
+    =render 'answers/answers'
 
-.answers
-  =render 'answers/answers'
 
 .answer-errors
 = bootstrap_form_for [@question, @answer], remote: true do |f|

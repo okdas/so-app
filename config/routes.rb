@@ -4,12 +4,13 @@ Rails.application.routes.draw do
   resources :questions do
     resources :answers
     resources :users
+    resources :comments
   end
 
   resources :answers do
     resources :comments
   end
-  resources :comments
+
 
   # get '/questions', to: 'questions#index'
 

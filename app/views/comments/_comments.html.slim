@@ -1,6 +1,6 @@
-- if answer.comments
-  - for c in answer.comments do
-    li.right.clearfix
+- if @comment_object.comments
+  - for c in @comment_object.comments do
+    li.right-chat.clearfix
       span.chat-img.pull-right
         = gravatar_image_tag(c.user.email, alt: c.user.name, class: 'img-circle', size: 50, gravatar: { size: 50 })
       .chat-body.clearfix
