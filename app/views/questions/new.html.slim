@@ -1,4 +1,8 @@
-= bootstrap_form_for @question do |f|
+= bootstrap_nested_form_for @question do |f|
   = f.text_field :title, autofocus: true
   = f.text_area :body, label: 'Question'
+  = f.fields_for :attachments do |file|
+    = file.file_field :attachment
+    = file.link_to_add 'add', :attachments
+    = file.link_to_remove 'remove'
   = f.primary 'Ask question'

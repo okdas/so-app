@@ -10,8 +10,10 @@ gem 'mysql2'
 gem 'slim-rails', '~> 2.1.4'
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.1.1.1'
-gem 'bootstrap_form', '~> 2.1.1'
+gem 'bootstrap_form', git: 'https://github.com/bootstrap-ruby/rails-bootstrap-forms'
 gem 'gravatar_image_tag'
+gem 'nested_form', '~> 0.3.2'
+gem 'carrierwave', '~> 0.10.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

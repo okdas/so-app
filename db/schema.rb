@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140521103457) do
+ActiveRecord::Schema.define(version: 20140523100941) do
 
   create_table "answers", force: true do |t|
     t.text     "body"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20140521103457) do
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
   add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
+
+  create_table "attachments", force: true do |t|
+    t.integer "attachmentable_id"
+    t.string  "attachmentable_type"
+    t.integer "user_id"
+    t.string  "attachment"
+  end
+
+  add_index "attachments", ["attachmentable_id", "attachmentable_type"], name: "index_attachments_on_attachmentable_id_and_attachmentable_type", using: :btree
+  add_index "attachments", ["user_id"], name: "index_attachments_on_user_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "body"

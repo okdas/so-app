@@ -4,6 +4,11 @@
     = link_to 'Edit question', edit_question_path(@question)
 
   p= @question.body
+  - if @question.attachments[0].respond_to?('attachment')
+    - for attachment in @question.attachments do
+      - if attachment.attachment.file.respond_to?('filename')
+        = attachment.attachment.file.filename
+  br
   .pull-right
     = link_to 'Comment question', new_question_comment_path(@question), remote: true, id: 'question-comment'
   ul.chat

@@ -6,7 +6,7 @@ feature 'asking question', %q{
   I want to be able to ask question
 } do
   given(:user) { create :user }
-  scenario 'Registered user trying to ask a question' do
+  scenario 'Registered user trying to ask a question', js: true do
     login_from_form(user)
 
     visit new_question_path
@@ -17,6 +17,21 @@ feature 'asking question', %q{
     click_button 'Ask question'
 
     expect(page).to have_content 'Your question successfully created.'
+  end
+
+  scenario 'Registered user trying to ask a question with attached file', js: true do
+    login_from_form(user)
+
+    visit new_question_path
+
+    fill_in 'Title', with: 'My question number nil'
+    fill_in 'Question', with: 'Donec vestibulum faucibus est, vitae tristique erat sollicitudin vitae.'
+    attach_file 'Attachment', "#{Rails.root}/spec/spec_helper.rb"
+
+    click_button 'Ask question'
+
+    expect(page).to have_content 'Your question successfully created.'
+    expect(page).to have_content 'spec_helper.rb'
   end
 
   scenario 'Unregistered user trying to ask question' do
