@@ -7,7 +7,7 @@
   - if @question.attachments[0].respond_to?('attachment')
     - for attachment in @question.attachments do
       - if attachment.attachment.file.respond_to?('filename')
-        = attachment.attachment.file.filename
+        = link_to attachment.attachment.file.filename, attachment.attachment.url
   br
   .pull-right
     = link_to 'Comment question', new_question_comment_path(@question), remote: true, id: 'question-comment'
@@ -31,6 +31,14 @@
 
 
 .answer-errors
-= bootstrap_form_for [@question, @answer], remote: true do |f|
-  = f.text_area :body, hide_label: true
-  = f.primary   'Give answer'
+- if user_signed_in?
+  = bootstrap_nested_form_for [@question, @answer], remote: true do |f|
+    = f.text_area :body, hide_label: true
+    = f.fields_for :attachments, remote: true do |file|
+      = file.file_field :attachment
+      = file.link_to_remove 'remove'
+    = f.link_to_add 'add', :attachments
+    = f.primary   'Give answer'
+- else
+  p
+    | You need to sign in or sign up before commenting.

@@ -31,7 +31,7 @@ feature 'asking question', %q{
     click_button 'Ask question'
 
     expect(page).to have_content 'Your question successfully created.'
-    expect(page).to have_content 'spec_helper.rb'
+    expect(page).to have_link 'spec_helper.rb', href: '/uploads/attachment/attachment/1/spec_helper.rb'
   end
 
   scenario 'Unregistered user trying to ask question' do

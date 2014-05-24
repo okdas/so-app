@@ -14,6 +14,7 @@ gem 'bootstrap_form', git: 'https://github.com/bootstrap-ruby/rails-bootstrap-fo
 gem 'gravatar_image_tag'
 gem 'nested_form', '~> 0.3.2'
 gem 'carrierwave', '~> 0.10.0'
+gem 'remotipart', '~> 1.2.1'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

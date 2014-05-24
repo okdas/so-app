@@ -15,8 +15,8 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @answer = @question.answers.build
-
+    @answer = @question.answers.build if user_signed_in?
+    @answer.attachments.build if user_signed_in?
   end
 
   def create

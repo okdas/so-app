@@ -7,6 +7,9 @@ class AnswersController < ApplicationController
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
     @answer.user = current_user
+    @answer.attachments.each do |attachment|
+      attachment.user = current_user
+    end
     @answer.save
     # redirect_to question_path(@answer.question)
   end
@@ -25,7 +28,7 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
-    params.require(:answer).permit(:body)
+    params.require(:answer).permit(:body, attachments_attributes: [:id, :_destroy, :attachment])
   end
 
   def answer_belongs_to_current_user
