@@ -17,6 +17,7 @@ feature 'Answer editing', %q{
 
     within "#answer#{answer.id}" do
       fill_in 'answer_body', with: 'answer.body answer.body answer.body'
+
       click_button 'Edit answer'
       expect(page).to have_content 'answer.body answer.body answer.body'
       expect(page).to_not have_selector 'textarea'
@@ -24,6 +25,33 @@ feature 'Answer editing', %q{
 
     expect(page).to_not have_content answer.body
   end
+
+  scenario 'Author trying to edit answer and delete attachment', js: true do
+    login_from_form(user)
+
+    visit question_path(answer.question)
+
+    fill_in 'answer_body', with: 'nothing to tell you.'
+    attach_file 'Attachment', "#{Rails.root}/spec/spec_helper.rb"
+    click_button 'Give answer'
+
+    expect(current_path).to eq question_path(answer.question)
+    within '.answers' do
+      expect(page).to have_link 'spec_helper.rb', href: '/uploads/attachment/attachment/1/spec_helper.rb'
+      expect(page).to have_content 'nothing to tell you.'
+      click_on "Edit"
+      fill_in 'answer_body', with: 'answer.body answer.body answer.body'
+      click_on 'remove'
+      click_button 'Edit answer'
+
+      expect(page).to have_content 'answer.body answer.body answer.body'
+      
+      expect(page).to_not have_selector 'textarea'
+
+      expect(page).not_to have_content 'spec_helper.rb'
+    end
+  end
+
 
   scenario 'Authenticated user trying to edit foreign answer' do
     login_from_form(user)

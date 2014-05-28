@@ -37,7 +37,7 @@
     = f.fields_for :attachments, remote: true do |file|
       = file.file_field :attachment
       = file.link_to_remove 'remove'
-    = f.link_to_add 'add', :attachments
+
     = f.primary   'Give answer'
 - else
   p

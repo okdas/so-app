@@ -1,0 +1,4 @@
+- if a.attachments[0].respond_to?('attachment')
+  - for attachment in a.attachments do
+    - if attachment.attachment.file.respond_to?('filename')
+      ul = link_to attachment.attachment.file.filename, attachment.attachment.url

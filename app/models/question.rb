@@ -4,7 +4,7 @@ class Question < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :attachments, as: :attachmentable
 
-  accepts_nested_attributes_for :attachments, allow_destroy: true
+  accepts_nested_attributes_for :attachments, allow_destroy: true, reject_if: :all_blank
 
   validates :title, presence: true, uniqueness: true, length: {
       within: 10..40,

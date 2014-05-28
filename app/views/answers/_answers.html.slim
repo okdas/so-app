@@ -15,11 +15,8 @@ ul.chat
               span.glyphicon.glyphicon-time
               | #{time_ago_in_words a.created_at} ago
           p.answer[id="answer#{a.id}"] = a.body
-          ul.attachments
-            - if a.attachments[0].respond_to?('attachment')
-              - for attachment in a.attachments do
-                 - if attachment.attachment.file.respond_to?('filename')
-                  ul = link_to attachment.attachment.file.filename, attachment.attachment.url
+          ul.attachments[id="attachments#{a.id}"]
+            = render 'answers/attachments', a: a
           ul.attachments
           .pull-right
             = link_to 'Comment answer', new_answer_comment_path(a), remote: true

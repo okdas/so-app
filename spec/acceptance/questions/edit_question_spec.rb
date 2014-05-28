@@ -6,7 +6,8 @@ feature 'asking question', %q{
 } do
   given(:user) { create :user }
   given(:question) { create :static_question }
-  scenario 'Registered user trying to edit his own question' do
+
+  scenario 'Author trying to edit his own question' do
     login_from_form(question.user)
 
     visit question_path(question)
@@ -21,7 +22,33 @@ feature 'asking question', %q{
     expect(page).to have_content 'Your question successfully edited.'
   end
 
-  scenario 'Registered user trying to edit foreign question' do
+
+  scenario 'Author trying to edit his own question and delete attachment', js: true do
+    login_from_form(user)
+
+    visit new_question_path
+
+    fill_in 'Title', with: 'My question number nil'
+    fill_in 'Question', with: 'Donec vestibulum faucibus est, vitae tristique erat sollicitudin vitae.'
+    attach_file 'Attachment', "#{Rails.root}/spec/spec_helper.rb"
+
+    click_button 'Ask question'
+
+    expect(page).to have_content 'Your question successfully created.'
+
+    visit question_path(user.questions.first)
+
+    expect(page).to have_link 'spec_helper.rb', href: '/uploads/attachment/attachment/1/spec_helper.rb'
+
+    visit edit_question_path(user.questions.first)
+
+    click_on 'remove'
+    click_on 'Edit question'
+
+
+  end
+
+  scenario 'Author user trying to edit foreign question' do
     login_from_form(user)
 
     visit question_path(question)
