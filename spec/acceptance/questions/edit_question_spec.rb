@@ -23,28 +23,25 @@ feature 'asking question', %q{
   end
 
 
-  scenario 'Author trying to edit his own question and delete attachment', js: true do
-    login_from_form(user)
+  scenario 'Author trying to add and delete attachment', js: true do
+    login_from_form(question.user)
 
-    visit new_question_path
+    visit question_path(question)
 
-    fill_in 'Title', with: 'My question number nil'
-    fill_in 'Question', with: 'Donec vestibulum faucibus est, vitae tristique erat sollicitudin vitae.'
-    attach_file 'Attachment', "#{Rails.root}/spec/spec_helper.rb"
-
-    click_button 'Ask question'
-
-    expect(page).to have_content 'Your question successfully created.'
-
-    visit question_path(user.questions.first)
-
-    expect(page).to have_link 'spec_helper.rb', href: '/uploads/attachment/attachment/1/spec_helper.rb'
-
-    visit edit_question_path(user.questions.first)
-
-    click_on 'remove'
     click_on 'Edit question'
 
+    click_on 'add'
+    attach_file 'Attachment', "#{Rails.root}/spec/spec_helper.rb"
+
+    click_button 'Edit question'
+
+    expect(page).to have_link 'spec_helper.rb', href: '/uploads/attachment/attachment/1/spec_helper.rb'
+    expect(page).to have_content 'Your question successfully edited.'
+
+    click_on 'Edit question'
+    click_on '- remove'
+    click_on 'Edit question'
+    expect(page).to_not have_content 'spec_helper.rb'
 
   end
 

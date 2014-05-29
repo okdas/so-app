@@ -2,17 +2,13 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :questions do
-    resources :answers
-    resources :users
-    resources :comments
+    resources :answers, only: [ :create, :edit, :update ]
+    resources :comments, only: [ :new, :create ]
   end
 
-  resources :answers do
-    resources :comments
+  resources :answers, only: [ :edit, :update ] do
+    resources :comments, only: [ :new, :create ]
   end
-
-
-  # get '/questions', to: 'questions#index'
 
   root 'questions#index'
 
