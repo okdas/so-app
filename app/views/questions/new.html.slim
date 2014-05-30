@@ -6,4 +6,5 @@
     = file.file_field :attachment
     = file.link_to_remove 'remove'
   = f.link_to_add 'add', :attachments
+  = f.text_field :tag_list, class: 'tagsinput'
   = f.primary 'Ask question'

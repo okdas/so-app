@@ -18,4 +18,5 @@
 //= require jquery.ui.core
 //= require jquery.ui.widget
 //= require jquery.ui.mouse
+//= require jquery.tagsinput.js
 //= require_tree .

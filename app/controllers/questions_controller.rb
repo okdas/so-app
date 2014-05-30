@@ -47,6 +47,14 @@ class QuestionsController < ApplicationController
     redirect_to question_path
   end
 
+  def tagged
+    if params[:tag].present?
+      @question = Question.tagged_with(params[:tag])
+    else
+      @question = Question.postall
+    end
+  end
+
   private
 
   def question_belongs_to_current_user
@@ -61,6 +69,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:title, :body, attachments_attributes: [:id, :_destroy, :attachment])
+    params.require(:question).permit(:tag_list, :title, :body, attachments_attributes: [:id, :_destroy, :attachment])
   end
 end

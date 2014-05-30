@@ -25,6 +25,10 @@
                   span.glyphicon.glyphicon-time
                   | #{time_ago_in_words c.created_at} ago
               p = c.body
+  .tags
+    - @question.tags.any?
+      - @question.tags.each do |tag|
+        = link_to tag.name, tagged_url(tag: tag.name)
   .question-comment-form
   .answers
     =render 'answers/answers'
