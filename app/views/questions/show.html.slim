@@ -28,7 +28,7 @@
   .tags
     - @question.tags.any?
       - @question.tags.each do |tag|
-        = link_to tag.name, tagged_url(tag: tag.name)
+        span.label.label-default = link_to tag.name, tagged_url(tag: tag.name)
   .question-comment-form
   .answers
     =render 'answers/answers'

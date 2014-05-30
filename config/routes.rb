@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :comments, only: [ :new, :create ]
   end
 
+  resources :tags, only: [ :index ]
+
   root 'questions#index'
   get 'tagged' => 'questions#tagged', :as => 'tagged'
 

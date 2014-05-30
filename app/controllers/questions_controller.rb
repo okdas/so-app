@@ -49,9 +49,10 @@ class QuestionsController < ApplicationController
 
   def tagged
     if params[:tag].present?
-      @question = Question.tagged_with(params[:tag])
+      @questions = Question.tagged_with(params[:tag])
     else
-      @question = Question.postall
+      # @questions = Question.tags
+      redirect_to tags_path
     end
   end
 

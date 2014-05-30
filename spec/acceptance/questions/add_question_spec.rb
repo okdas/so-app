@@ -13,10 +13,14 @@ feature 'asking question', %q{
 
     fill_in 'Title', with: 'My question number nil'
     fill_in 'Question', with: 'Donec vestibulum faucibus est, vitae tristique erat sollicitudin vitae.'
+    fill_in 'Tag list', with: 'freebsd, sql'
 
     click_button 'Ask question'
 
     expect(page).to have_content 'Your question successfully created.'
+    expect(page).to have_link 'freebsd', '/tagged?tag=freebsd'
+    visit questions_path
+    expect(page).to have_link 'sql', '/tagged?tag=sql'
   end
 
   scenario 'Registered user trying to ask a question with attached file', js: true do

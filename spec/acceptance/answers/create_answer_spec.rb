@@ -12,7 +12,6 @@ feature 'giving answer', %q{
 
     visit question_path(question)
     fill_in 'answer_body', with: 'nothing to tell you.'
-    fill_in 'Tags', with: 'freebsd, sql'
     click_button 'Give answer'
 
     expect(current_path).to eq question_path(question)
