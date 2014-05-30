@@ -16,10 +16,13 @@ feature 'asking question', %q{
 
     fill_in 'Title', with: 'My question edited title'
     fill_in 'Question', with: 'My question edited body. Nullam ut varius neque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum eu lectus lorem.'
+    fill_in 'Tag list', with: 'secondtag'
 
     click_on 'Edit question'
-
+    expect(current_path).to eq question_path(question)
+    expect(page).to have_link 'secondtag', href: '/tagged?tag=secondtag'
     expect(page).to have_content 'Your question successfully edited.'
+    expect(page).to_not have_content 'defaultTag'
   end
 
 

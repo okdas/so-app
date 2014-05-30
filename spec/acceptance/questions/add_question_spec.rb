@@ -18,9 +18,9 @@ feature 'asking question', %q{
     click_button 'Ask question'
 
     expect(page).to have_content 'Your question successfully created.'
-    expect(page).to have_link 'freebsd', '/tagged?tag=freebsd'
+    expect(page).to have_link 'freebsd', href: '/tagged?tag=freebsd'
     visit questions_path
-    expect(page).to have_link 'sql', '/tagged?tag=sql'
+    expect(page).to have_link 'sql', href: '/tagged?tag=sql'
   end
 
   scenario 'Registered user trying to ask a question with attached file', js: true do

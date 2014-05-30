@@ -18,4 +18,4 @@
           .tags
             -q.tags.any?
               - q.tags.each do |tag|
-                span.label.label-default = link_to tag.name, tagged_url(tag: tag.name)
+                span.label.label-default = link_to tag.name, tagged_path(tag: tag.name)

@@ -24,5 +24,6 @@ FactoryGirl.define do
     title 'My question number nil'
     body 'Donec vestibulum faucibus est, vitae tristique erat sollicitudin vitae.'
     association :user, factory: :user, strategy: :build
+    tag_list 'defaultTag, secondtag'
   end
 end
