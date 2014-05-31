@@ -1,7 +1,7 @@
 class AnswersController < ApplicationController
-  before_action :authenticate_user!, only: [ :create, :edit ]
-  before_action :load_answer, only: [ :edit, :update ]
-  before_action :answer_belongs_to_current_user, only: [ :edit, :update ]
+  before_action :authenticate_user!, only: [:create, :edit]
+  before_action :load_answer, only: [:edit, :update]
+  before_action :answer_belongs_to_current_user, only: [:edit, :update]
 
   def create
     @question = Question.find(params[:question_id])

@@ -13,25 +13,19 @@
 
     Checkbox.prototype = {
 
-        constructor: Checkbox
-
-        , init: function (element, options) {
+        constructor: Checkbox, init: function (element, options) {
             var $el = this.$element = $(element)
 
             this.options = $.extend({}, $.fn.checkbox.defaults, options);
             $el.before(this.options.template);
             this.setState();
-        }
-
-        , setState: function () {
+        }, setState: function () {
             var $el = this.$element
                 , $parent = $el.closest('.checkbox');
 
             $el.prop('disabled') && $parent.addClass('disabled');
             $el.prop('checked') && $parent.addClass('checked');
-        }
-
-        , toggle: function () {
+        }, toggle: function () {
             var ch = 'checked'
                 , $el = this.$element
                 , $parent = $el.closest('.checkbox')
@@ -42,9 +36,7 @@
                 $parent.toggleClass(ch) && checked ? $el.removeAttr(ch) : $el.prop(ch, ch);
                 $el.trigger(e).trigger('change');
             }
-        }
-
-        , setCheck: function (option) {
+        }, setCheck: function (option) {
             var d = 'disabled'
                 , ch = 'checked'
                 , $el = this.$element

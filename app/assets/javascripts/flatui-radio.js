@@ -13,25 +13,19 @@
 
     Radio.prototype = {
 
-        constructor: Radio
-
-        , init: function (element, options) {
+        constructor: Radio, init: function (element, options) {
             var $el = this.$element = $(element)
 
             this.options = $.extend({}, $.fn.radio.defaults, options);
             $el.before(this.options.template);
             this.setState();
-        }
-
-        , setState: function () {
+        }, setState: function () {
             var $el = this.$element
                 , $parent = $el.closest('.radio');
 
             $el.prop('disabled') && $parent.addClass('disabled');
             $el.prop('checked') && $parent.addClass('checked');
-        }
-
-        , toggle: function () {
+        }, toggle: function () {
             var d = 'disabled'
                 , ch = 'checked'
                 , $el = this.$element
@@ -58,9 +52,7 @@
                     $el.trigger('change');
                 }
             }
-        }
-
-        , setCheck: function (option) {
+        }, setCheck: function (option) {
             var ch = 'checked'
                 , $el = this.$element
                 , $parent = $el.closest('.radio')

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, only: [ :create, :new ]
-  before_action :commentable_object, only: [ :create, :new ]
+  before_action :authenticate_user!, only: [:create, :new]
+  before_action :commentable_object, only: [:create, :new]
 
   def new
     @comment = Comment.new
