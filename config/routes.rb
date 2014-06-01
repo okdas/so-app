@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
+  concern :votable do
+    post 'up' => 'votes#up'
+    post 'down' => 'votes#down'
+  end
+
   resources :questions do
     resources :answers, only: [ :create, :edit, :update ]
     resources :comments, only: [ :new, :create ]
-    resources :votes, only: [ :up, :down ]
+    concerns :votable
   end
 
   resources :answers, only: [ :edit, :update ] do
