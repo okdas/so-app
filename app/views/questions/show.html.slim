@@ -1,5 +1,6 @@
 .question
   h4= @question.title
+  = link_to 'Vote up',
   - if @question.user == current_user
     = link_to 'Edit question', edit_question_path(@question)
 

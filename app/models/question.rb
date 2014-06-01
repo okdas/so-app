@@ -5,6 +5,7 @@ class Question < ActiveRecord::Base
   has_many :attachments, as: :attachmentable
 
   acts_as_taggable
+  acts_as_votable
 
   accepts_nested_attributes_for :attachments, allow_destroy: true, reject_if: :all_blank
 
