@@ -11,3 +11,4 @@
 questionId = $('.question').data('questionId')
 PrivatePub.subscribe '/questions/' + questionId + '/votes', (data, channel) ->
   console.log(data)
+  $('.question .votecount').html('')
