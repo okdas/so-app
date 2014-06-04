@@ -15,9 +15,7 @@ class VotesController < ApplicationController
   private
 
   def vote_response
-    PrivatePub.publish_to "/#{@vote_object.class.name.pluralize.downcase}/#{@vote_object.id}/votes",
-                          vote_size: @vote_object.get_upvotes.size - @vote_object.get_downvotes.size
-    render nothing: true
+    render json: { vote_size: @vote_object.get_upvotes.size - @vote_object.get_downvotes.size }
   end
 
   def votable_object
