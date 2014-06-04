@@ -13,8 +13,8 @@ feature 'asking question', %q{
 
     fill_in 'Title', with: 'My question number nil'
     fill_in 'Question', with: 'Donec vestibulum faucibus est, vitae tristique erat sollicitudin vitae.'
-    fill_in 'Tag list', with: 'freebsd, sql'
-
+    page.execute_script "$('.tagsinput').importTags('freebsd,sql');"
+    save_and_open_page
     click_button 'Ask question'
 
     expect(page).to have_content 'Your question successfully created.'
