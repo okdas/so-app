@@ -2,35 +2,40 @@ ul.chat
   / TODO: WTF WITH THIS ARRAY?
   - for a in @question.answers do
     - if a.persisted?
-      li.left-chat.clearfix
-        span.chat-img.pull-left
-          = gravatar_image_tag(a.user.email, alt: a.user.name, class: 'img-circle', size: 50, gravatar: { size: 50 })
-          - if current_user == a.user
-            p.text-center
-              = link_to 'Edit', edit_question_answer_path(@question, a), remote: true
-        .chat-body.clearfix
-          .header
-            strong.primary-font #{a.user.name}
-            small.pull-right.text-muted
-              span.glyphicon.glyphicon-time
-              | #{time_ago_in_words a.created_at} ago
-          p.answer[id="answer#{a.id}"] = a.body
-          ul.attachments[id="attachments#{a.id}"]
-            = render 'answers/attachments', a: a
-          ul.attachments
-          .pull-right
-            = link_to 'Comment answer', new_answer_comment_path(a), remote: true
-      .comments*{data: {comment_id: a.id}}
-        - if a.comments
-          - for c in a.comments do
-            li.right-chat.clearfix
-              span.chat-img.pull-right
-                = gravatar_image_tag(c.user.email, alt: c.user.name, class: 'img-circle', size: 50, gravatar: { size: 50 })
-              .chat-body.clearfix
-                .header
-                  strong.pull-right.primary-font #{c.user.name}
-                  small.text-muted
-                    span.glyphicon.glyphicon-time
-                    | #{time_ago_in_words c.created_at} ago
-                p = c.body
-      .comment-form*{data: {comment_form_id: a.id}}
+      .answer[id="answer_#{a.id}"]
+        li.left-chat.clearfix
+          span.chat-img.pull-left
+            = gravatar_image_tag(a.user.email, alt: a.user.name, class: 'img-circle', size: 50, gravatar: { size: 50 })
+            .vote
+              .votecount = a.get_upvotes.size - a.get_downvotes.size
+              = link_to 'Vote up', answer_up_path(a), remote: true, method: :post, class: 'up' if user_signed_in?
+              = link_to 'Vote down', answer_down_path(a), remote: true, method: :post, class: 'down' if user_signed_in?
+            - if current_user == a.user
+              p.text-center
+                = link_to 'Edit', edit_question_answer_path(@question, a), remote: true
+          .chat-body.clearfix
+            .header
+              strong.primary-font #{a.user.name}
+              small.pull-right.text-muted
+                span.glyphicon.glyphicon-time
+                | #{time_ago_in_words a.created_at} ago
+            p.answer[id="answer#{a.id}"] = a.body
+            ul.attachments[id="attachments#{a.id}"]
+              = render 'answers/attachments', a: a
+            ul.attachments
+            .pull-right
+              = link_to 'Comment answer', new_answer_comment_path(a), remote: true
+        .comments*{data: {comment_id: a.id}}
+          - if a.comments
+            - for c in a.comments do
+              li.right-chat.clearfix
+                span.chat-img.pull-right
+                  = gravatar_image_tag(c.user.email, alt: c.user.name, class: 'img-circle', size: 50, gravatar: { size: 50 })
+                .chat-body.clearfix
+                  .header
+                    strong.pull-right.primary-font #{c.user.name}
+                    small.text-muted
+                      span.glyphicon.glyphicon-time
+                      | #{time_ago_in_words c.created_at} ago
+                  p = c.body
+        .comment-form*{data: {comment_form_id: a.id}}

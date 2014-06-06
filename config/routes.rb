@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :answers, only: [ :edit, :update ] do
     resources :comments, only: [ :new, :create ]
+    concerns :votable
   end
 
   resources :tags, only: [ :index ]
