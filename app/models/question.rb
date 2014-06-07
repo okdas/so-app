@@ -6,6 +6,7 @@ class Question < ActiveRecord::Base
 
   acts_as_taggable
   acts_as_votable
+  is_impressionable
 
   accepts_nested_attributes_for :attachments, allow_destroy: true, reject_if: :all_blank
 
