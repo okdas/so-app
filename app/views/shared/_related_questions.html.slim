@@ -1,0 +1,5 @@
+.row
+  ul.nav.nav-list.nav-list-vivid
+    li.nav-header Related questions
+    - for question in @question.find_related_tags do
+      li = link_to question.title, question_path(question)

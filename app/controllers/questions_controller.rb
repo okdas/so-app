@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :load_question, only: [:show, :edit, :update, :destroy]
   before_action :question_belongs_to_current_user, only: [:edit, :update]
 
-  layout 'questions'
+  layout 'application'
 
   def index
     @questions = Question.all
@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
   def show
     @answer = @question.answers.build if user_signed_in?
     @answer.attachments.build if user_signed_in?
+    render 'questions/show', layout: 'questions'
   end
 
   def create

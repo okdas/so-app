@@ -5,9 +5,10 @@ html
   =render 'shared/navbar'
   .container
     .row
-      .col-md-12
+      .col-md-8
         = yield
         = notice
         = alert
           .row
-
+      .col-md-4
+        =render 'shared/questions_sidebar'
