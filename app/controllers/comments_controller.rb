@@ -2,6 +2,8 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!, only: [:create, :new]
   before_action :commentable_object, only: [:create, :new]
 
+  load_and_authorize_resource
+
   def new
     @comment = Comment.new
   end

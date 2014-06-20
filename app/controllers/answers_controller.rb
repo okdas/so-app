@@ -3,6 +3,8 @@ class AnswersController < ApplicationController
   before_action :load_answer, only: [:edit, :update]
   before_action :answer_belongs_to_current_user, only: [:edit, :update]
 
+  load_and_authorize_resource
+
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)

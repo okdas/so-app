@@ -10,4 +10,10 @@ FactoryGirl.define do
     email
     password 'winterIsComing'
   end
+
+  factory :static_user do
+    name 'Valar Morghulis'
+    email 'ceo@morghulis.net'
+    password 'valardohaeris'
+  end
 end

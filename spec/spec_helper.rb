@@ -20,6 +20,8 @@ RSpec.configure do |config|
   config.include Capybara::DSL
   config.extend ControllerMacros
 
+  config.use_transactional_fixtures = true
+
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If true, the base class of anonymous controllers will be inferred

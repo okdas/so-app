@@ -4,7 +4,7 @@
     .votecount = @question.get_upvotes.size - @question.get_downvotes.size
     = link_to 'Vote up', question_up_path(@question), remote: true, method: :post, class: 'up' if user_signed_in?
     = link_to 'Vote down', question_down_path(@question), remote: true, method: :post, class: 'down' if user_signed_in?
-  - if @question.user == current_user
+  - if can? :update, @question
     = link_to 'Edit question', edit_question_path(@question)
 
   p= @question.body
@@ -39,7 +39,7 @@
 
 
 .answer-errors
-- if user_signed_in?
+- if can? :create, @answer
   = bootstrap_nested_form_for [@question, @answer], remote: true do |f|
     = f.text_area :body, hide_label: true
     = f.fields_for :attachments, remote: true do |file|

@@ -2,6 +2,8 @@ class VotesController < ApplicationController
   before_action :authenticate_user!
   before_action :votable_object
 
+  # load_and_authorize_resource
+
   def up
     @vote_object.vote_by voter: current_user, vote: true
     vote_response

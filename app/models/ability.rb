@@ -13,6 +13,10 @@ class Ability
     guest_abilities
     can :create, [Question, Answer, Comment]
     can :update, [Question, Answer], user_id: user.id
+    # can :up, Vote
+    # can :down, Vote
+    # cannot :up, Vote, user_id: user.id
+    # cannot :down, Vote, user_id: user.id
   end
 
   def guest_abilities
