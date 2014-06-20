@@ -18,6 +18,7 @@ gem 'remotipart', '~> 1.2.1'
 gem 'acts-as-taggable-on', '~> 3.2.6'
 gem 'acts_as_votable', '~> 0.9.0'
 gem 'impressionist'
+gem 'cancancan'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
