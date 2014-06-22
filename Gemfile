@@ -21,6 +21,8 @@ gem 'impressionist'
 gem 'devise', '~> 3.2.4'
 gem 'cancancan'
 
+gem 'inherited_resources'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views

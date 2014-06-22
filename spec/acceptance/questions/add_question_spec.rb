@@ -16,7 +16,7 @@ feature 'asking question', %q{
     page.execute_script "$('.tagsinput').importTags('freebsd,sql');"
     click_button 'Ask question'
 
-    expect(page).to have_content 'Your question successfully created.'
+    expect(page).to have_content 'Question was successfully created.'
     expect(page).to have_link 'freebsd', href: '/tagged?tag=freebsd'
     visit questions_path
     expect(page).to have_link 'sql', href: '/tagged?tag=sql'
@@ -33,7 +33,7 @@ feature 'asking question', %q{
 
     click_button 'Ask question'
 
-    expect(page).to have_content 'Your question successfully created.'
+    expect(page).to have_content 'Question was successfully created.'
     expect(page).to have_link 'spec_helper.rb', href: '/uploads/attachment/attachment/1/spec_helper.rb'
   end
 

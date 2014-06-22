@@ -21,7 +21,7 @@ feature 'asking question', %q{
     click_on 'Edit question'
     expect(current_path).to eq question_path(question)
     expect(page).to have_link 'secondtag', href: '/tagged?tag=secondtag'
-    expect(page).to have_content 'Your question successfully edited.'
+    expect(page).to have_content 'Question was successfully updated.'
     expect(page).to_not have_content 'defaultTag'
   end
 
@@ -39,7 +39,7 @@ feature 'asking question', %q{
     click_button 'Edit question'
 
     expect(page).to have_link 'spec_helper.rb', href: '/uploads/attachment/attachment/1/spec_helper.rb'
-    expect(page).to have_content 'Your question successfully edited.'
+    expect(page).to have_content 'Question was successfully updated.'
 
     click_on 'Edit question'
     click_on '- remove'
