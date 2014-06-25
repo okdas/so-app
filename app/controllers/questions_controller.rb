@@ -5,7 +5,7 @@ class QuestionsController < InheritedResources::Base
   before_action :question_belongs_to_current_user, only: [:edit, :update]
   impressionist actions: [:show], unique: [:session_hash]
 
-  layout 'application', only: [ :index, :edit, :new ]
+  layout 'application', only: [ :index, :edit, :new, :tagged ]
 
   def tagged
     if params[:tag].present?
