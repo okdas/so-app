@@ -1,4 +1,4 @@
-= bootstrap_nested_form_for @answer, url: answer_path, remote: true do |f|
+= bootstrap_nested_form_for [parent, resource], remote: true do |f|
   = f.text_area :body, hide_label: true
   = f.fields_for :attachments, remote: true do |file|
     = link_to file.object.attachment.file.filename, file.object.attachment.url unless file.object.new_record?

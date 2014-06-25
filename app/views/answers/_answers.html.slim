@@ -1,6 +1,6 @@
 ul.chat
   / TODO: WTF WITH THIS ARRAY?
-  - for a in @question.answers do
+  - for a in question.answers do
     - if a.persisted?
       .answer[id="answer_#{a.id}"]
         li.left-chat.clearfix
@@ -12,7 +12,7 @@ ul.chat
               = link_to 'Vote down', answer_down_path(a), remote: true, method: :post, class: 'down' if user_signed_in?
             - if current_user == a.user
               p.text-center
-                = link_to 'Edit', edit_question_answer_path(@question, a), remote: true
+                = link_to 'Edit', edit_question_answer_path(question, a), remote: true
           .chat-body.clearfix
             .header
               strong.primary-font #{a.user.name}

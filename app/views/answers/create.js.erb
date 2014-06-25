@@ -3,6 +3,6 @@
 $('.answer-errors').html('<%= j message %>');
 <% end  %>
 <% else %>
-$('.answers').html('<%= j render 'answers/answers' %>');
+$('.answers').html('<%= j render 'answers/answers', question: parent %>');
 $('#answer_body').val('');
 <% end %>
