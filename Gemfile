@@ -20,7 +20,7 @@ gem 'acts_as_votable', '~> 0.9.0'
 gem 'impressionist'
 gem 'devise', '~> 3.2.4'
 gem 'cancancan'
-
+gem 'merit'
 gem 'inherited_resources'
 
 # Use Uglifier as compressor for JavaScript assets

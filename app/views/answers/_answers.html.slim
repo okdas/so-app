@@ -15,7 +15,7 @@ ul.chat
                 = link_to 'Edit', edit_question_answer_path(question, a), remote: true
           .chat-body.clearfix
             .header
-              strong.primary-font #{a.user.name}
+              strong.primary-font #{a.user.name} (#{a.user.points})
               small.pull-right.text-muted
                 span.glyphicon.glyphicon-time
                 | #{time_ago_in_words a.created_at} ago
