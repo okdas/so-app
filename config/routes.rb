@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  use_doorkeeper
   devise_for :users
 
   concern :votable do
@@ -22,4 +23,13 @@ Rails.application.routes.draw do
 
   root 'questions#index'
   get 'tagged' => 'questions#tagged', :as => 'tagged'
+
+  namespace 'api' do
+    namespace 'v1' do
+      resource :profiles do
+        get :me, on: :collection
+        get :index, on: :collection
+      end
+    end
+  end
 end

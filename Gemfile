@@ -22,6 +22,7 @@ gem 'devise', '~> 3.2.4'
 gem 'cancancan'
 
 gem 'inherited_resources'
+gem 'doorkeeper'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -62,3 +63,4 @@ gem 'capybara', '~> 2.2.1', group: :test
 gem 'launchy', '~> 2.4.2', group: :test
 gem 'capybara-webkit', group: :test
 gem 'database_cleaner', group: :test
+gem 'json_spec', group: :test
