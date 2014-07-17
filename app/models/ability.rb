@@ -20,6 +20,7 @@ class Ability
   end
 
   def guest_abilities
+    can :tagged, Question
     can :read, :all
   end
 
