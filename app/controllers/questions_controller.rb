@@ -2,8 +2,10 @@ class QuestionsController < InheritedResources::Base
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :build_answer, only: :show
   before_action :build_attachments, only: :new
-  before_action :question_belongs_to_current_user, only: [:edit, :update]
+  # before_action :question_belongs_to_current_user, only: [:edit, :update]
   impressionist actions: [:show], unique: [:session_hash]
+
+  load_and_authorize_resource
 
   layout 'application', only: [ :index, :edit, :new, :tagged ]
 
