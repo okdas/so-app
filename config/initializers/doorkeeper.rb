@@ -16,11 +16,11 @@ Doorkeeper.configure do
   # end
 
   # Authorization Code expiration time (default 10 minutes).
-  # authorization_code_expires_in 10.minutes
+  authorization_code_expires_in 60.minutes
 
   # Access token expiration time (default 2 hours).
   # If you want to disable expiration, set this to nil.
-  # access_token_expires_in 2.hours
+  access_token_expires_in 24.hours
 
   # Reuse access token for the same resource owner within an application (disabled by default)
   # Rationale: https://github.com/doorkeeper-gem/doorkeeper/issues/383
