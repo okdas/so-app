@@ -24,15 +24,14 @@ Rails.application.routes.draw do
   root 'questions#index'
   get 'tagged' => 'questions#tagged', :as => 'tagged'
 
-  namespace 'api' do
+  namespace 'api', defaults: {format: 'json'} do
     namespace 'v1' do
       resource :profiles do
         get :me, on: :collection
         get :index, on: :collection
       end
 
-      resource :questions do
-        get :index, on: :collection
+      resources :questions, only: [ :index, :show ] do
       end
     end
   end

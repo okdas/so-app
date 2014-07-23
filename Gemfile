@@ -21,6 +21,11 @@ gem 'impressionist'
 gem 'devise', '~> 3.2.4'
 gem 'cancancan'
 
+gem 'active_model_serializers'
+gem 'oj'
+gem 'oj_mimic_json'
+
+
 gem 'inherited_resources'
 gem 'doorkeeper'
 
