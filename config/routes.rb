@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   resources :tags, only: [ :index ]
 
+  resources :search, only: [ :index ]
+
   root 'questions#index'
   get 'tagged' => 'questions#tagged', :as => 'tagged'
 

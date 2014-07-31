@@ -1,13 +1,6 @@
 .row
-  .iconbar.iconbar-horizontal.btn-block
-    ul
-      li.active
-        = link_to ' Ask question', new_question_path, class: 'fui-new'
-      li
-        a.fui-mail href="#fakelink"
-          span.iconbar-unread 3
-      li
-        a.fui-search href="#fakelink"
+  div
+    = form_tag(search_index_path, method: :get) { text_field_tag 'search' }
 
 .row
   ul.nav.nav-list.nav-list-vivid
