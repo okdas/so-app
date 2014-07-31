@@ -13,9 +13,14 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
+/log/*.pid
 /tmp
 
 .idea
 
 config/database.yml
 /public/uploads
+
+# Sphinx
+config/*.sphinx.conf
+db/sphinx
