@@ -6,7 +6,7 @@ feature 'Question search', %q{
   I want to search question
 } do
 
-  given(:question) { create :question }
+  given!(:question) { create :question }
 
   scenario 'Visitor search for existing question', js: true do
     visit root_path
