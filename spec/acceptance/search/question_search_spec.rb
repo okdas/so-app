@@ -9,14 +9,22 @@ feature 'Question search', %q{
   given!(:question) { create :question }
 
   scenario 'Visitor search for existing question', js: true do
-    visit root_path
+    ThinkingSphinx::Test.index 'question_core'
 
-    fill_in 'search', with: 'lorem ipsum'
+    visit search_index_path(search: 'Lorem ipsum')
 
-    # Simulates 'Enter' hit
-    page.execute_script("$('#search').submit()")
-
-    expect(page).to have_content "My question number"
+    within '.search-result' do
+      expect(page).to have_content "My question number"
+    end
   end
 
+  scenario 'Visitor search for not existing question', js: true do
+    ThinkingSphinx::Test.index 'question_core'
+
+    visit search_index_path(search: 'NO QUESTION LIKE THAT')
+
+    within '.search-result' do
+      expect(page).to_not have_content "My question number"
+    end
+  end
 end

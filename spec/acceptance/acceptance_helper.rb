@@ -1,11 +1,14 @@
 require 'spec_helper'
 
 RSpec.configure do |config|
+  config.include SphinxHelpers, type: :feature
   Capybara.javascript_driver = :webkit
 
   config.include AcceptanceMacros
 
   config.use_transactional_fixtures = false
+
+  ThinkingSphinx::Test.start_with_autostop
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
