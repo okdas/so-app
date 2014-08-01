@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.remotipart
-//= require turbolinks
 //= require bootstrap
 //= require jquery.ui.core
 //= require jquery.ui.widget

@@ -1,17 +1,16 @@
 .questions
-  .row-fluid
-    -for q in @questions do
+  -for q in @questions do
+    .well
       .row
-        .counts
-          .col-md-1.votes
-            .item-count #{q.get_upvotes.size - q.get_downvotes.size}
-            p.small votes
-          .col-md-1.answers
-            .item-count #{q.answers.count}
-            p.small answers
-          .col-md-1.views
-            .item-count #{q.impressionist_count}
-            p.small views
+        .col-md-1.votes.counts
+          .item-count #{q.get_upvotes.size - q.get_downvotes.size}
+          p.small votes
+        .col-md-1.answers.counts
+          .item-count #{q.answers.count}
+          p.small answers
+        .col-md-1.views.counts
+          .item-count #{q.impressionist_count}
+          p.small views
         .col-md-9
           .question-title #{link_to q.title, q}
           span.small #{q.user.name} at #{q.created_at.strftime("%H:%M")}

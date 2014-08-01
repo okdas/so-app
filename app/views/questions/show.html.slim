@@ -1,5 +1,10 @@
-.question data={question_id: "#{@question.id}"}
-  h4= @question.title
+.question.entry data={question_id: "#{@question.id}"}
+  h2= @question.title
+  .meta
+    span.glyphicon.glyphicon-time= @question.created_at.strftime("%H:%M")
+    span.glyphicon.glyphicon-user= @question.user.name
+    span.pull-right.glyphicon.glyphicon-comment= @question.answers.count
+
   .vote
     .votecount = @question.get_upvotes.size - @question.get_downvotes.size
     = link_to 'Vote up', question_up_path(@question), remote: true, method: :post, class: 'up' if user_signed_in?
@@ -8,6 +13,16 @@
     = link_to 'Edit question', edit_question_path(@question)
 
   p= @question.body
+
+  .well
+    .row
+      .tags
+        h5 Tags:
+        - @question.tags.any?
+         - for tag in @question.tags do
+          = link_to tag.name, tagged_path(tag: tag.name)
+
+
   - if @question.attachments[0].respond_to?('attachment')
     - for attachment in @question.attachments do
       - if attachment.attachment.file.respond_to?('filename')
@@ -29,10 +44,6 @@
                   span.glyphicon.glyphicon-time
                   | #{time_ago_in_words c.created_at} ago
               p = c.body
-  .tags
-    - @question.tags.any?
-      - @question.tags.each do |tag|
-        span.label.label-default = link_to tag.name, tagged_path(tag: tag.name)
   .question-comment-form
   .answers
     =render 'answers/answers', question: resource

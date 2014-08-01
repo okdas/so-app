@@ -61,3 +61,49 @@
 .left-chat p.answer {
   margin-left: 60px !important;
 }
+
+.meta {
+  border-top:1px solid #eee;
+  border-bottom:1px solid #eee;
+  margin:8px 0px;
+  padding:4px 8px;
+  color:#888;
+  text-transform:uppercase;
+  font-size:11px;
+  background:#eee;
+}
+
+.entry {
+  margin-bottom:15px;
+  padding-bottom:10px;
+  border-bottom:1px solid #eee;
+}
+
+.entry .tags a{
+  background:#428bca;
+  border:1px solid #3a72a9;
+  margin-right: 4px;
+  border-bottom:3px solid #3a72a9;
+  display:inline-block;
+  font-weight:normal;
+  padding:0px 5px;
+  color:#fff;
+  border-radius:4px;
+  font-size:13px;
+  -webkit-transition:background 1s ease;
+  -moz-transition:background 1s ease;
+  -o-transition:background 1s ease;
+  transition:background 1s ease;
+}
+
+.entry .tags a:hover{
+  border-bottom:3px solid #428bca;
+  background:#3a72a9;
+  border:1px solid #3a72a9;
+  color:#fff;
+  text-decoration:none;
+  -webkit-transition:background 1s ease;
+  -moz-transition:background 1s ease;
+  -o-transition:background 1s ease;
+  transition:background 1s ease;
+}
