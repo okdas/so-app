@@ -7,7 +7,7 @@ feature 'Question search', %q{
 } do
 
   given!(:question) { create :question }
-
+  given!(:question2) { create :question }
   scenario 'Visitor search for existing question', js: true do
     ThinkingSphinx::Test.index 'question_core'
 
