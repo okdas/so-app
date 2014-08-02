@@ -21,7 +21,8 @@ gem 'impressionist'
 gem 'devise', '~> 3.2.4'
 gem 'cancancan'
 gem 'whenever'
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv'
+gem 'dotenv-deployment', require: 'dotenv/deployment'
 
 gem 'active_model_serializers'
 gem 'oj'
