@@ -5,7 +5,7 @@ pid               "#{app_path}/current/tmp/pids/unicorn.pid"
 
 # listen
 # listen "/tmp/unicorn-www.example.com.socket", :backlog =>
-listen '0.0.0.0:8080'
+listen '127.0.0.1:9001'
 
 # logging
 stderr_path "log/unicorn.stderr.log"
