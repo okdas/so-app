@@ -14,6 +14,10 @@ set :default_shell, '/bin/bash -l'
 
 after 'deploy:publishing', 'deploy:restart'
 
+before 'deploy:publishing', 'thinking_sphinx:stop'
+after 'deploy:publishing', 'thinking_sphinx:start'
+after 'thinking_sphinx:start', 'thinking_sphinx:index'
+
 namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
