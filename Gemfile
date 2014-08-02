@@ -20,6 +20,7 @@ gem 'acts_as_votable', '~> 0.9.0'
 gem 'impressionist'
 gem 'devise', '~> 3.2.4'
 gem 'cancancan'
+gem 'whenever'
 
 gem 'active_model_serializers'
 gem 'oj'
@@ -52,10 +53,17 @@ gem 'thinking-sphinx'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+group :development do
+  gem 'capistrano', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano3-unicorn', :require => false
+  # gem 'capistrano-sidekiq', require: false
+end
+
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
