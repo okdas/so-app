@@ -7,7 +7,7 @@ class QuestionsController < InheritedResources::Base
 
   load_and_authorize_resource
 
-  layout 'application', only: [ :index, :edit, :new, :tagged ]
+  layout 'application', only: [:index, :edit, :new, :tagged]
 
   def tagged
     if params[:tag].present?
@@ -27,7 +27,7 @@ class QuestionsController < InheritedResources::Base
     super
   end
 
- # TODO: switch to cancan.
+  # TODO: switch to cancan.
   def question_belongs_to_current_user
     unless current_user == resource.user
       flash[:notice] = 'This is not your question.'

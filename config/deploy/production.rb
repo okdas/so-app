@@ -6,7 +6,7 @@
 
 role :app, %w{soapp@92.222.181.64}
 role :web, %w{soapp@92.222.181.64}
-role :db,  %w{soapp@92.222.181.64}
+role :db, %w{soapp@92.222.181.64}
 
 
 # Extended Server Syntax

@@ -55,7 +55,7 @@ feature 'asking question', %q{
 
     expect(page).not_to have_content 'Edit question'
 
-    expect{visit edit_question_path(question)}.to raise_error(CanCan::AccessDenied)
+    expect { visit edit_question_path(question) }.to raise_error(CanCan::AccessDenied)
   end
 
   scenario 'Unregistered user trying to edit question' do

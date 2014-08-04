@@ -47,7 +47,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'thinking-sphinx'
 
@@ -70,7 +70,7 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'spring',        group: :development
+gem 'spring', group: :development
 gem "better_errors", group: :development
 gem 'rspec-rails', '~> 2.14.2', group: [:development, :test]
 gem 'factory_girl_rails', '~> 4.4.1', group: [:development, :test]

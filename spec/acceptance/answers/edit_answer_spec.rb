@@ -45,7 +45,7 @@ feature 'Answer editing', %q{
       click_button 'Edit answer'
 
       expect(page).to have_content 'answer.body answer.body answer.body'
-      
+
       expect(page).to_not have_selector 'textarea'
 
       expect(page).not_to have_content 'spec_helper.rb'

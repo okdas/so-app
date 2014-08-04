@@ -9,7 +9,7 @@ feature 'Vote for question', %q{
   scenario 'Authenticated user trying to upvote question', js: true do
     login_from_form(user)
     visit question_path answer.question
-    
+
     within "#answer_#{answer.id}" do
       within '.votecount' do
         expect(page).to have_content '0'

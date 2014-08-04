@@ -29,5 +29,4 @@ describe Question do
   end
 
 
-
 end

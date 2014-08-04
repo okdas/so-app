@@ -2,7 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-
   $('ul.chat .vote').click ->
     answerId = $(this).parents().get(2).id
     $('#' + answerId + ' .vote').bind 'ajax:success', (e, data, status, xhr) ->

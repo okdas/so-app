@@ -17,7 +17,7 @@ class VotesController < ApplicationController
   private
 
   def vote_response
-    render json: { vote_size: @vote_object.get_upvotes.size - @vote_object.get_downvotes.size }
+    render json: {vote_size: @vote_object.get_upvotes.size - @vote_object.get_downvotes.size}
   end
 
   def votable_object

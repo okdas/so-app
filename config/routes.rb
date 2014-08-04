@@ -9,19 +9,19 @@ Rails.application.routes.draw do
   end
 
   resources :questions do
-    resources :answers, only: [ :create, :edit, :update ]
-    resources :comments, only: [ :new, :create ]
+    resources :answers, only: [:create, :edit, :update]
+    resources :comments, only: [:new, :create]
     concerns :votable
   end
 
-  resources :answers, only: [ :edit, :update ] do
-    resources :comments, only: [ :new, :create ]
+  resources :answers, only: [:edit, :update] do
+    resources :comments, only: [:new, :create]
     concerns :votable
   end
 
-  resources :tags, only: [ :index ]
+  resources :tags, only: [:index]
 
-  resources :search, only: [ :index ]
+  resources :search, only: [:index]
 
   root 'questions#index'
   get 'tagged' => 'questions#tagged', :as => 'tagged'
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
         get :index, on: :collection
       end
 
-      resources :questions, only: [ :index, :show ] do
+      resources :questions, only: [:index, :show] do
       end
     end
   end

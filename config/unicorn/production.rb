@@ -1,7 +1,7 @@
 # paths
 app_path = "/home/soapp/web"
 working_directory "#{app_path}/current"
-pid               "#{app_path}/current/tmp/pids/unicorn.pid"
+pid "#{app_path}/current/tmp/pids/unicorn.pid"
 
 # listen
 # listen "/tmp/unicorn-www.example.com.socket", :backlog =>

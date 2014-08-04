@@ -9,7 +9,6 @@ describe User do
   it { should validate_presence_of :password }
 
 
-
   it do
     should ensure_length_of(:name).
                is_at_least(2).

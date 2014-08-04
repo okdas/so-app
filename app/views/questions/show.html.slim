@@ -19,8 +19,8 @@
       .tags
         h5 Tags:
         - @question.tags.any?
-         - for tag in @question.tags do
-          = link_to tag.name, tagged_path(tag: tag.name)
+          - for tag in @question.tags do
+            = link_to tag.name, tagged_path(tag: tag.name)
 
 
   - if @question.attachments[0].respond_to?('attachment')
